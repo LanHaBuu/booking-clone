@@ -1,13 +1,79 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+
+input,
+button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+p {
+  margin: 0 !important;
+}
+
+.active {
+  opacity: 0.5 !important;
+}
+
+/* Scrollbar */
+html *::-webkit-scrollbar {
+  border-radius: 0;
+  width: 8px;
+}
+
+html *::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .15);
+}
+
+html *::-webkit-scrollbar-track {
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+/* Slide customize */
+
+/* btn next-prev */
+.slide-customize .slick-prev,
+.slide-customize .slick-next {
+  width: 44px;
+  height: 48px;
+}
+
+.slide-customize .slick-prev {
+  left: -40px;
+  z-index: 10;
+}
+
+.slide-customize .slick-next {
+  right: -40px;
+  z-index: 10;
+}
+
+.slide-customize .slick-prev:hover,
+.slide-customize .slick-next:hover {
+  color: blue;
+}
+
+.slide-customize .slick-prev:focus,
+.slide-customize .slick-next:focus {
+  color: blue;
+}
+
+
+
+.slide-customize .slick-prev::before,
+.slide-customize .slick-next::before {
+  font-size: 2.4rem;
+  color: black;
 }

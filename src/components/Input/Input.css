@@ -1,0 +1,17 @@
+.label-input {
+    font-size: 1.3rem;
+    color: rgba(187, 187, 187, 0.9);
+    letter-spacing: 1px;
+    align-self: start;
+    padding: 0 20px;
+}
+
+
+.icon-password {
+    position: absolute;
+    top: 50%;
+    right: 4rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+    user-select: none;
+}

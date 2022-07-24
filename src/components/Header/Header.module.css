@@ -1,0 +1,106 @@
+.wrapper-header {
+    background-color: #fff;
+    box-shadow: 0px 1px 1px rgb(0 0 0 / 18%);
+    padding: 10px 0;
+    min-height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+.wrapper-header .container-header {
+    height: 60px;
+}
+
+.logo-menu {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #969495;
+    margin-right: 10px;
+}
+
+.logo-main {
+    width: 150px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    line-height: 1rem;
+
+}
+
+.title {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.content-block {
+    cursor: pointer;
+    user-select: none;
+}
+
+.content-block span {
+    font-size: 0.8rem;
+}
+
+.wrapper-user {
+    position: relative;
+}
+
+.user {
+    text-align: center;
+    cursor: pointer;
+}
+
+.user-avatar {
+    border-radius: 50%;
+    max-width: 30px;
+    max-height: 30px;
+}
+
+
+.user-desc {
+    background-color: #fff;
+    width: 200%;
+    font-size: 1rem;
+    padding: 5px 15px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 50%;
+}
+
+.user-name {
+    border-bottom: 1px solid gray;
+    text-align: center;
+}
+
+.log-out {
+    cursor: pointer;
+    user-select: none;
+    text-align: right;
+    transition: all .5s linear;
+}
+
+/* language */
+.language {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flag {
+    border-radius: 50%;
+    width: 32px;
+    height: 28px;
+    margin-right: 4px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.flag:active {
+    opacity: 0.8;
+}

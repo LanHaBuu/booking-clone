@@ -1,0 +1,108 @@
+.form-wrapper {
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-form {
+    max-width: 500px;
+    min-width: 300px;
+    min-height: 550px;
+    width: 80%;
+    background-color: white;
+    border-radius: 20px;
+    position: relative;
+}
+
+
+.form-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin: 2rem 0;
+    font-weight: bold;
+}
+
+.wrapper-input-form {
+    display: flex;
+    flex-direction: column;
+    padding: 0 4rem;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.wrapper-input-form input {
+    font-size: 1.4rem;
+    box-shadow: inset 0px -3px 0px 0px rgb(187 187 187 / 20%);
+    padding: 7px 0 15px 25px;
+    transition: all linear .3s;
+}
+
+.wrapper-input-form input:focus {
+    box-shadow: inset 0px -3px 0px 0px rgb(34 193 195 / 70%);
+}
+
+.wrapper-btn-submit {
+    padding: 0 2rem;
+    margin: 1rem 0;
+}
+
+.form-submit {
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(90deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+    color: white;
+    border-radius: 25px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+
+.footer-login-form {
+    padding: 0 0 20px;
+}
+
+.footer-text {
+    width: 100%;
+    text-align: center;
+    font-size: 1.6rem;
+    margin: 1rem 0;
+}
+
+.wrapper-social-btn {
+    background-color: white;
+    box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.4);
+    height: 50px;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    width: 70%;
+    margin: 2.5rem auto;
+    display: flex;
+    cursor: pointer;
+    user-select: none;
+}
+
+.social-text {
+    margin-left: 1.5rem;
+    font-size: 1.4rem;
+}
+
+.wrapper-social-btn.wrapper-btn-facebook {
+    background-color: #1877F2;
+
+}
+
+.btn-facebook {
+    background-color: white;
+}
+
+.footer-navigate {
+    display: flex;
+    width: 50%;
+    margin: auto;
+    justify-content: space-around;
+    font-size: 1.2rem;
+}

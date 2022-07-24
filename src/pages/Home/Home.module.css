@@ -1,0 +1,123 @@
+.wrapper-home-header {
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0 !important;
+}
+
+.home-header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.1));
+    padding: 45px 0;
+    height: 100%;
+}
+
+.home-header-center {
+    margin-top: 80px;
+    height: 70%;
+}
+
+.home-header-text {
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.home-header-text h3 {
+    font-weight: 400;
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+.home-header-text h2 {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.home-header-input {
+    width: 455px;
+    height: 50px;
+    background: #f7d800;
+    color: #fff;
+    outline: none;
+    border-radius: 25px;
+    border: 1px solid transparent;
+    line-height: 50px;
+    padding-left: 20px;
+    padding-right: 25px;
+    margin: 0 auto;
+}
+
+.input-search {
+    color: black;
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+.home-header-input input {
+    width: 80%;
+    margin: 0 20px;
+}
+
+.input-close {
+    color: rgb(82, 168, 168);
+    cursor: pointer;
+}
+
+/* footer-header-home */
+
+.footer-header-home {
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 1));
+    height: 220px;
+}
+
+.home-item {
+    list-style: none;
+    width: 66.9%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-list {
+    width: 100px;
+}
+
+.wrapper-list-img {
+    background-color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    user-select: none;
+}
+
+.list-img {
+    width: 30px;
+}
+
+.list-text {
+    text-align: center;
+    font-weight: 500;
+}
+
+/* home-center */
+
+.session-block {
+    max-width: 1296px;
+    max-height: 330px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    margin-top: 20px;
+}
+
+.session-bg {
+    background: #dadada;
+}

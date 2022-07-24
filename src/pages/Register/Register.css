@@ -1,0 +1,17 @@
+.error-mess {
+    color: crimson;
+    margin-left: 2rem;
+}
+
+.icon-close-form {
+    position: absolute;
+    font-size: 1.5rem;
+    top: 1.5rem;
+    right: 2rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.wrapper-input-form input[type="file"] {
+    font-size: 1rem;
+}

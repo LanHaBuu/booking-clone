@@ -1,0 +1,23 @@
+{
+    "header.group1": "Medical speciality",
+    "header.group1.1": "Find a doctor by specialty",
+    "header.group2": "Health facilities",
+    "header.group2.2": "Choose hospital, clinic",
+    "header.group3": "Doctor",
+    "header.group3.3": "Choose a good doctor",
+    "header.group4": "Medical package",
+    "header.group4.4": "General health check",
+    
+    "home.header.center1": "Medical background",
+    "home.header.center2": "Comprehensive health care",
+
+    "home.header.list1": "Specialist examination",
+    "home.header.list2": "Remote examination",
+    "home.header.list3": "General examination",
+    "home.header.list4": "Medical test",
+    "home.header.list5": "Mental health",
+    "home.header.list6": "Dental examination",
+    "home.header.list7": "Surgery Package",
+    "home.header.list8": "Medical Products"
+
+}
