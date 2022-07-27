@@ -17,7 +17,7 @@ function BackToTop() {
 	const handleScroll = () => {
 		window.scroll({
 			behavior: "smooth",
-			top: 100,
+			top: 0,
 		})
 	}
 

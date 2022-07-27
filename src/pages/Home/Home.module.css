@@ -37,7 +37,7 @@
 }
 
 .home-header-input {
-    width: 455px;
+    max-width: 455px;
     height: 50px;
     background: #f7d800;
     color: #fff;
@@ -57,7 +57,7 @@
 }
 
 .home-header-input input {
-    width: 80%;
+    width: 60%;
     margin: 0 20px;
 }
 
@@ -70,7 +70,7 @@
 
 .footer-header-home {
     background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 1));
-    height: 220px;
+    height: 100%;
 }
 
 .home-item {
@@ -79,6 +79,7 @@
     margin: auto;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .home-list {
@@ -120,4 +121,25 @@
 
 .session-bg {
     background: #dadada;
+}
+
+@media (max-width: 768px) {
+    .home-item {
+        width: 100%;
+
+    }
+}
+
+@media (max-width: 576px) {
+    .home-header-center {
+        height: 40%;
+    }
+
+    .footer-header-home {
+        height: 310px;
+    }
+
+    .home-item {
+        display: none;
+    }
 }

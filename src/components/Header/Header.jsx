@@ -25,11 +25,16 @@ function Header() {
 
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
+
 	useEffect(() => {
 		if (userLogin?.access_token) {
 			getUserWithSession(userLogin?.access_token, dispatch)
 		}
 	}, [userLogin])
+
+	if (userSession && userSession.role === "admin") {
+		navigate("/admin")
+	}
 
 	const handleLogout = () => {
 		const value = window.confirm("Có đúng là bạn muốn thoát không?")
@@ -43,14 +48,13 @@ function Header() {
 
 	const handleTranslate = e => {
 		dispatch(changeLanguage(e.target.id))
-		localStorage.setItem("language", JSON.stringify(e.target.id))
 	}
 
 	return (
 		<div className={cx("wrapper-header", "container-fluid")}>
 			<div className={cx("container", "container-header")}>
 				<div className='row pt-3'>
-					<div className='col-lg-2'>
+					<div className='col-lg-3 col-md-4 col-sm-5 col-7'>
 						<FaBars className={cx("logo-menu")} />
 						<Link to={routes.home}>
 							<img
@@ -60,7 +64,7 @@ function Header() {
 							/>
 						</Link>
 					</div>
-					<div className='col-lg-7'>
+					<div className='col-lg-6 col-md-3 col-sm-2 col-1'>
 						<div className={cx("header-content")}>
 							<div className={cx("content-block")}>
 								<p className={cx("title")}>
@@ -97,7 +101,12 @@ function Header() {
 						</div>
 					</div>
 
-					<div className={cx("col-lg-2", "language")}>
+					<div
+						className={cx(
+							"col-lg-2 col-md-4 col-sm-4 col-3",
+							"language",
+						)}
+					>
 						<div className={language === "en" ? "active" : ""}>
 							<img
 								alt='ảnh nền'
@@ -120,7 +129,12 @@ function Header() {
 						</div>
 					</div>
 
-					<div className={cx("col-lg-1", "wrapper-user")}>
+					<div
+						className={cx(
+							"col-lg-1 col-md-1 col-sm-1 col-1",
+							"wrapper-user",
+						)}
+					>
 						<div
 							className={cx("user")}
 							onClick={() => setShowInfoUser(!showInfoUser)}

@@ -28,7 +28,7 @@ function Hanbook() {
 				<Slider {...settings}>
 					<div className={cx("hanbook-container")}>
 						<img
-							className={cx("hanbook-img")}
+							className={cx("hanbook-img", "img-fluid")}
 							src={hb1}
 							alt='hanbook'
 						/>
@@ -39,7 +39,7 @@ function Hanbook() {
 					</div>
 					<div className={cx("hanbook-container")}>
 						<img
-							className={cx("hanbook-img")}
+							className={cx("hanbook-img", "img-fluid")}
 							src={hb2}
 							alt='hanbook'
 						/>
@@ -50,7 +50,7 @@ function Hanbook() {
 					</div>
 					<div className={cx("hanbook-container")}>
 						<img
-							className={cx("hanbook-img")}
+							className={cx("hanbook-img", "img-fluid")}
 							src={hb3}
 							alt='hanbook'
 						/>
@@ -58,7 +58,7 @@ function Hanbook() {
 					</div>
 					<div className={cx("hanbook-container")}>
 						<img
-							className={cx("hanbook-img")}
+							className={cx("hanbook-img", "img-fluid")}
 							src={hb4}
 							alt='hanbook'
 						/>

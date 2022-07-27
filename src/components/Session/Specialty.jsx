@@ -25,7 +25,7 @@ function Specialty({ settings }) {
 				<Slider {...settings}>
 					<div>
 						<img
-							className={cx("session-img")}
+							className={cx("session-img", "img-fluid")}
 							src={bgChuyenKhoa1}
 							alt='chuyên khoa'
 						/>
@@ -33,7 +33,7 @@ function Specialty({ settings }) {
 					</div>
 					<div>
 						<img
-							className={cx("session-img")}
+							className={cx("session-img", "img-fluid")}
 							src={bgChuyenKhoa2}
 							alt='chuyên khoa'
 						/>
@@ -41,7 +41,7 @@ function Specialty({ settings }) {
 					</div>
 					<div>
 						<img
-							className={cx("session-img")}
+							className={cx("session-img", "img-fluid")}
 							src={bgChuyenKhoa3}
 							alt='chuyên khoa'
 						/>
@@ -49,15 +49,15 @@ function Specialty({ settings }) {
 					</div>
 					<div>
 						<img
-							className={cx("session-img")}
-							src={bgChuyenKhoa4}
+							className={cx("session-img", "img-fluid")}
+							src={bgChuyenKhoa8}
 							alt='chuyên khoa'
 						/>
 						<span className='px-2'>Tim mạch</span>
 					</div>
 					<div>
 						<img
-							className={cx("session-img")}
+							className={cx("session-img", "img-fluid")}
 							src={bgChuyenKhoa5}
 							alt='chuyên khoa'
 						/>
@@ -65,7 +65,7 @@ function Specialty({ settings }) {
 					</div>
 					<div>
 						<img
-							className={cx("session-img")}
+							className={cx("session-img", "img-fluid")}
 							src={bgChuyenKhoa6}
 							alt='chuyên khoa'
 						/>
@@ -73,7 +73,7 @@ function Specialty({ settings }) {
 					</div>
 					<div>
 						<img
-							className={cx("session-img")}
+							className={cx("session-img", "img-fluid")}
 							src={bgChuyenKhoa7}
 							alt='chuyên khoa'
 						/>
@@ -81,8 +81,8 @@ function Specialty({ settings }) {
 					</div>
 					<div>
 						<img
-							className={cx("session-img")}
-							src={bgChuyenKhoa8}
+							className={cx("session-img", "img-fluid")}
+							src={bgChuyenKhoa4}
 							alt='chuyên khoa'
 						/>
 						<span className='px-2'>Châm cứu</span>

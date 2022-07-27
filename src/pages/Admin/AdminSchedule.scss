@@ -1,0 +1,44 @@
+.admin-schedule-wrapper {
+    .a-s-title {
+        font-size: 2rem;
+        font-weight: 600;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .react-datepicker__day {
+        user-select: none;
+        font-size: 0.8rem;
+    }
+
+    .pick-hour {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        flex-wrap: wrap;
+
+        .time-detail {
+            background-color: #dadada;
+            padding: 10px 5px;
+            cursor: pointer;
+            user-select: none;
+            margin: 10px 0;
+            width: 160px;
+
+            &.active {
+                background-color: #46a83d;
+                color: white;
+            }
+        }
+    }
+
+    .save-schedule {
+        background-color: crimson;
+        padding: 10px 15px;
+        margin-top: 20px;
+        cursor: pointer;
+        user-select: none;
+    }
+
+
+}

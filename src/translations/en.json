@@ -8,7 +8,7 @@
     "header.group4": "Medical package",
     "header.group4.4": "General health check",
     
-    "home.header.center1": "Medical background",
+    "home.header.center1": "Medical platform",
     "home.header.center2": "Comprehensive health care",
 
     "home.header.list1": "Specialist examination",
@@ -20,4 +20,5 @@
     "home.header.list7": "Surgery Package",
     "home.header.list8": "Medical Products"
 
+   
 }

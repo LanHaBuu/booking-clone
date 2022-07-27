@@ -14,6 +14,13 @@ import {
 	getUserFail,
 } from "./Slice/userSlice"
 
+import {
+	getDocterDataFail,
+	getDocterDataStart,
+	getDocterDataSuccess,
+} from "./Slice/doctorSlice"
+import { getTime } from "./Slice/timeSlice"
+
 // --------------user------------------
 export const login = (user, dispatch, navigate) => {
 	dispatch(loginStart())
@@ -60,4 +67,30 @@ export const getUserWithSession = (accessToken, dispatch) => {
 
 export const checkEmail = email => {
 	return axios.post(process.env.REACT_APP_CHECK_MAIL, { email })
+}
+
+// --------------------doctor-----------------
+export const getDataDoctor = dispatch => {
+	dispatch(getDocterDataStart())
+	axios
+		.get("https://mocki.io/v1/62ed7d0b-aa55-4f23-8dfb-b05b87e40b2c")
+		.then(res => {
+			dispatch(getDocterDataSuccess(res.data))
+		})
+		.catch(err => {
+			dispatch(getDocterDataFail(err.message))
+			toast.error(err.message)
+		})
+}
+
+// ------------------time------------------
+export const fetchTime = dispatch => {
+	axios
+		.get("https://mocki.io/v1/62595e97-4e59-447e-a674-2e6ec61cd996")
+		.then(res => {
+			dispatch(getTime(res.data))
+		})
+		.catch(err => {
+			toast.error(err.message)
+		})
 }

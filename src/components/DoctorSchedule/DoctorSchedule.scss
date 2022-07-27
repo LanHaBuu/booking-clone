@@ -1,0 +1,23 @@
+.doctor-schedule-wrapper {
+    .schedule-time {
+        height: 160px;
+    }
+
+    .time-btn {
+        background-color: #FFF8AE;
+        padding: 8px 16px;
+        margin: 10px 0;
+        width: 190px;
+    }
+
+    .doctor-schedule-select {
+        text-align: center;
+        padding: 5px 0;
+        font-weight: 600;
+        outline: none;
+        cursor: pointer;
+        border: none;
+        border-bottom: 1px solid;
+        margin-bottom: 10px;
+    }
+}

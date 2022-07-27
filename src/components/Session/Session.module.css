@@ -16,7 +16,6 @@
 
 .session-img {
     width: 100%;
-    height: 200px;
     padding: 0 10px;
     object-fit: cover;
     object-position: center;
@@ -26,7 +25,6 @@
 /* Doctor */
 
 .doctor-container {
-    width: 100%;
     min-height: 250px;
     padding: 0 10px;
     display: flex !important;
@@ -38,6 +36,11 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
+    cursor: pointer;
+}
+
+.doctor-avatar:active {
+    opacity: 0.9;
 }
 
 .doctor-name {
@@ -64,4 +67,43 @@
     font-size: 1.2rem;
     margin-left: 5px !important;
     font-weight: 500;
+}
+
+@media (max-width:992px) {
+    .session-img {}
+
+    .hanbook-container {
+        display: block !important
+    }
+
+    .hanbook-img {
+        max-height: 150px;
+    }
+
+    .hanbook-container p {
+        width: 80%;
+    }
+
+}
+
+@media (max-width:576px) {
+    .doctor-specialist {
+        display: none;
+    }
+
+    .doctor-name {
+        font-size: .8rem;
+    }
+
+    .session-title h3 {
+        font-size: 1.3rem;
+    }
+
+    .session-title button {
+        font-size: .8rem;
+    }
+
+    .hanbook-container p {
+        font-size: 1rem;
+    }
 }

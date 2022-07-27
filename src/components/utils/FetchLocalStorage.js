@@ -13,11 +13,3 @@ export const fetchUserFb = () => {
 			: localStorage.clear()
 	return userInfoFb
 }
-
-export const saveLanguage = () => {
-	const language =
-		localStorage.getItem("language") !== undefined
-			? JSON.parse(localStorage.getItem("language"))
-			: localStorage.clear()
-	return language
-}

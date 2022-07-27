@@ -29,6 +29,10 @@ import Hanbook from "../../components/Session/Hanbook"
 import Footer from "../../components/Footer/Footer"
 import BackToTop from "../../components/Button/BackToTop"
 
+// --------------------------------------------------
+
+// ---------------------------------------------------
+
 const cx = classNames.bind(styles)
 
 function Home() {
@@ -37,21 +41,27 @@ function Home() {
 	const [changeBaner, setChangeBaner] = useState()
 
 	const navigate = useNavigate()
-	const userLogin = useSelector(state => state.user.login?.userLogin)
+	// const userLogin = useSelector(state => state.user.login?.userLogin)
 	const { language } = useSelector(state => state.translate)
 
-	useEffect(() => {
-		if (!userLogin) {
-			navigate(routes.login)
-		}
-	}, [userLogin])
+	// const { data: doctorList } = useSelector(state => state.doctor.doctor)
+
+	// console.log(doctorList)
+
+	// const dispatch = useDispatch()
+
+	// useEffect(() => {
+	// 	if (!userLogin) {
+	// 		navigate(routes.login)
+	// 	}
+	// }, [userLogin])
 
 	const settings = {
 		dots: false,
 		infinite: true,
 		speed: 1000,
-		slidesToShow: 4,
-		slidesToScroll: 4,
+		slidesToShow: 3,
+		slidesToScroll: 3,
 	}
 
 	const handleChange = e => {

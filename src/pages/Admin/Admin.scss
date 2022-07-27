@@ -1,0 +1,28 @@
+.admin-wrapper {
+    .update-desc-doctor {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .markdown-title {
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    .btn-save {
+        margin-top: 10px;
+        background-color: crimson;
+        padding: 10px 20px;
+
+        &:hover {
+            opacity: 0.9;
+        }
+    }
+
+    .btn-update {
+        margin-top: 10px;
+        background-color: orange;
+        padding: 10px 20px;
+    }
+
+}

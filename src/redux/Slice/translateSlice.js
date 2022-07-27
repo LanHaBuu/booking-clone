@@ -1,12 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { saveLanguage } from "../../components/utils/FetchLocalStorage"
-
-const languageInLocalStorage = saveLanguage()
 
 const translateSlice = createSlice({
 	name: "translate",
 	initialState: {
-		language: languageInLocalStorage,
+		language: "vi",
 	},
 	reducers: {
 		changeLanguage: (state, action) => {
