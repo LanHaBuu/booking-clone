@@ -1,0 +1,65 @@
+.doctor-clinic-wrapper {
+
+    .clinic-name {
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+
+    .clinic-address {
+        font-size: 0.9rem;
+        padding: 5px 0;
+    }
+
+    .clinic-cost {
+        padding: 10px 0;
+        display: flex;
+        border-top: 1px solid #80808045;
+        border-bottom: 1px solid #80808045;
+
+
+        .title-cost {
+            color: gray;
+            text-transform: uppercase;
+        }
+
+        .clinic-price {
+            letter-spacing: 1px;
+            padding: 0 5px;
+        }
+
+        .clinic-cost-btn {
+            color: #45c3d2;
+
+            user-select: none;
+        }
+    }
+
+    .clinic-detail {
+        border: 1px solid gray;
+        background-color: #dadadaa6;
+        transition: all .3s linear;
+
+        .clinic-detail-title {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 3px;
+        }
+
+        .clinic-detail-content {
+            padding: 0 3px;
+        }
+
+        .clinic-payment {
+            background-color: #ccccccbd;
+            padding: 0 3px;
+            border-top: 1px solid gray;
+        }
+
+    }
+
+    .clinic-detail-btn {
+        padding: 10px 0;
+        color: #45c3d2;
+    }
+
+}

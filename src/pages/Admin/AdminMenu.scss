@@ -5,13 +5,11 @@
     justify-content: space-between;
     align-items: center;
 
-    .update,
-    .create {
-        margin: 0 30px;
-        font-size: 1.1rem;
+    .btn-admin-menu {
+        font-size: 1rem;
 
         &:hover {
-            color: white;
+            color: black;
         }
 
         &:focus {
@@ -25,5 +23,53 @@
         margin-right: 20px;
         cursor: pointer;
         user-select: none;
+    }
+
+    .dropdown-menu-admin {
+        display: flex;
+
+
+        .dropdown {
+
+            .dropdown-toggle {
+                background-color: transparent;
+                border: none;
+
+                &:focus {
+                    box-shadow: none;
+                }
+
+
+            }
+
+            .dropdown-menu {
+                width: 200px;
+                padding-left: 10px;
+                padding-right: 10px;
+
+
+                .dropdown-item {
+                    padding: 0;
+                }
+
+                .btn-admin-menu {
+                    margin: 0;
+                }
+            }
+        }
+
+
+    }
+}
+
+@media (max-width:576px) {
+    .admin-menu {
+        .btn-admin-menu {
+            font-size: .8rem;
+        }
+
+        .btn-exit {
+            font-size: 1.5rem;
+        }
     }
 }

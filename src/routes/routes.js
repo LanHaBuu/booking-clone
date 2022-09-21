@@ -5,4 +5,5 @@ export const routes = {
 	admin: "/admin",
 	adminSchedule: "/schedule",
 	doctor: "/doctors/:id",
+	adminSpecialist: "/specialist",
 }

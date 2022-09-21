@@ -20,6 +20,13 @@ import {
 	getDocterDataSuccess,
 } from "./Slice/doctorSlice"
 import { getTime } from "./Slice/timeSlice"
+import { fetchCastSuccess } from "./Slice/castSlice"
+
+import { getDatabase, ref, child, get, set } from "firebase/database"
+import { getPatientSuccess } from "./Slice/patientSlice"
+import { getDoctorDetailSuccess } from "./Slice/doctorDetailSlice"
+import { getDoctorScheduleSuccess } from "./Slice/doctorScheduleSlice"
+import { getDataSpecial } from "./Slice/dataSpecialist"
 
 // --------------user------------------
 export const login = (user, dispatch, navigate) => {
@@ -93,4 +100,108 @@ export const fetchTime = dispatch => {
 		.catch(err => {
 			toast.error(err.message)
 		})
+}
+
+// ------------------thanh toán------------
+export const fetchCast = dispatch => {
+	axios
+		.get("https://mocki.io/v1/b0074468-0ebb-4621-b7e8-b9094590b0f5")
+		.then(res => {
+			dispatch(fetchCastSuccess(res.data))
+		})
+		.catch(err => {
+			toast.error(err.massage)
+		})
+}
+
+// -------------firebase-------------
+
+export const postPatiens = data => {
+	const db = getDatabase()
+	const userId = data.userId
+	set(ref(db, `patients/${userId}`), data)
+}
+
+export const getPatiens = dispatch => {
+	const dbRef = ref(getDatabase())
+	get(child(dbRef, `patients/`))
+		.then(snapshot => {
+			if (snapshot.exists()) {
+				dispatch(getPatientSuccess(snapshot.val()))
+			} else {
+				console.log("No data available")
+			}
+		})
+		.catch(error => {
+			console.error(error)
+		})
+}
+
+export const postDoctorDetail = data => {
+	const db = getDatabase()
+	set(ref(db, `doctor-detail/${data.doctorId}`), data)
+}
+
+export const getDoctorDetail = dispatch => {
+	const dbRef = ref(getDatabase())
+	get(child(dbRef, `doctor-detail/`))
+		.then(snapshot => {
+			if (snapshot.exists()) {
+				dispatch(getDoctorDetailSuccess(snapshot.val()))
+			} else {
+				console.log("No data available")
+			}
+		})
+		.catch(error => {
+			console.error(error)
+		})
+}
+
+export const postDoctorSchedule = data => {
+	const db = getDatabase()
+	set(ref(db, `doctor-schedule/`), data)
+}
+
+export const getDoctorScheduleApi = dispatch => {
+	const dbRef = ref(getDatabase())
+	get(child(dbRef, `doctor-schedule/`))
+		.then(snapshot => {
+			if (snapshot.exists()) {
+				dispatch(getDoctorScheduleSuccess(snapshot.val()))
+			} else {
+				console.log("No data available")
+			}
+		})
+		.catch(error => {
+			console.error(error)
+		})
+}
+
+export const postDataSpecialist = data => {
+	const db = getDatabase()
+	set(ref(db, `data-specialist/`), data)
+}
+
+export const getDataSpecialistApi = dispatch => {
+	const dbRef = ref(getDatabase())
+	get(child(dbRef, `data-specialist/`))
+		.then(snapshot => {
+			if (snapshot.exists()) {
+				dispatch(getDataSpecial(snapshot.val()))
+			} else {
+				console.log("No data available")
+			}
+		})
+		.catch(error => {
+			console.error(error)
+		})
+}
+
+// -------------------------------
+export const nameSpecial = () => {
+	return axios.get("https://mocki.io/v1/e9b0decd-1efb-476d-b7ed-1b5e727f0731")
+}
+
+export const nameSpecialNew = () => {
+	return axios.get("https://mocki.io/v1/6d392335-c912-4f39-82d1-562ec1f77805")
 }

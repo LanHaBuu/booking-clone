@@ -2,19 +2,19 @@ import classNames from "classnames/bind"
 import styles from "./Session.module.css"
 
 import Slider from "react-slick"
-
-import bgChuyenKhoa1 from "../../assests/images/session/chuyenkhoa/chuyenkhoaphobien1.jpg"
-import bgChuyenKhoa2 from "../../assests/images/session/chuyenkhoa/chuyenkhoaphobien2.jpg"
-import bgChuyenKhoa3 from "../../assests/images/session/chuyenkhoa/chuyenkhoaphobien3.jpg"
-import bgChuyenKhoa4 from "../../assests/images/session/chuyenkhoa/chuyenkhoaphobien4.jpg"
-import bgChuyenKhoa5 from "../../assests/images/session/chuyenkhoa/chuyenkhoaphobien5.jpg"
-import bgChuyenKhoa6 from "../../assests/images/session/chuyenkhoa/chuyenkhoaphobien6.jpg"
-import bgChuyenKhoa7 from "../../assests/images/session/chuyenkhoa/chuyenkhoaphobien7.jpg"
-import bgChuyenKhoa8 from "../../assests/images/session/chuyenkhoa/chuyenkhoaphobien8.jpg"
+import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { nameSpecial } from "../../redux/apiRequest"
 
 const cx = classNames.bind(styles)
 
 function Specialty({ settings }) {
+	const [data, setData] = useState([])
+
+	useEffect(() => {
+		nameSpecial().then(res => setData(res.data.Specialist))
+	}, [])
+
 	return (
 		<>
 			<div className={cx("session-title")}>
@@ -23,70 +23,23 @@ function Specialty({ settings }) {
 			</div>
 			<div className='slide-customize'>
 				<Slider {...settings}>
-					<div>
-						<img
-							className={cx("session-img", "img-fluid")}
-							src={bgChuyenKhoa1}
-							alt='chuyên khoa'
-						/>
-						<span className='px-2'>Cơ xương khớp</span>
-					</div>
-					<div>
-						<img
-							className={cx("session-img", "img-fluid")}
-							src={bgChuyenKhoa2}
-							alt='chuyên khoa'
-						/>
-						<span className='px-2'>Thần kinh</span>
-					</div>
-					<div>
-						<img
-							className={cx("session-img", "img-fluid")}
-							src={bgChuyenKhoa3}
-							alt='chuyên khoa'
-						/>
-						<span className='px-2'>Tiêu hóa</span>
-					</div>
-					<div>
-						<img
-							className={cx("session-img", "img-fluid")}
-							src={bgChuyenKhoa8}
-							alt='chuyên khoa'
-						/>
-						<span className='px-2'>Tim mạch</span>
-					</div>
-					<div>
-						<img
-							className={cx("session-img", "img-fluid")}
-							src={bgChuyenKhoa5}
-							alt='chuyên khoa'
-						/>
-						<span className='px-2'>Tai mũi họng</span>
-					</div>
-					<div>
-						<img
-							className={cx("session-img", "img-fluid")}
-							src={bgChuyenKhoa6}
-							alt='chuyên khoa'
-						/>
-						<span className='px-2'>Cột sống</span>
-					</div>
-					<div>
-						<img
-							className={cx("session-img", "img-fluid")}
-							src={bgChuyenKhoa7}
-							alt='chuyên khoa'
-						/>
-						<span className='px-2'>Y học cổ truyền</span>
-					</div>
-					<div>
-						<img
-							className={cx("session-img", "img-fluid")}
-							src={bgChuyenKhoa4}
-							alt='chuyên khoa'
-						/>
-						<span className='px-2'>Châm cứu</span>
-					</div>
+					{data &&
+						data.length > 0 &&
+						data.map(item => (
+							<div key={item.id}>
+								<Link to={`/specialist/${item.id}`}>
+									<img
+										className={cx(
+											"session-img",
+											"img-fluid",
+										)}
+										src={item.img}
+										alt='chuyên khoa'
+									/>
+								</Link>
+								<span className='px-2'>{item.name}</span>
+							</div>
+						))}
 				</Slider>
 			</div>
 		</>

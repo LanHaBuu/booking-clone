@@ -38,9 +38,19 @@
                 width: 100%;
                 object-fit: cover;
                 object-position: center;
+                text-align: center;
             }
         }
 
     }
 
+}
+
+
+@media (max-width: 576px) {
+    .doctor-info-wrapper {
+        .doctor-name {
+            font-size: 1.2rem !important;
+        }
+    }
 }

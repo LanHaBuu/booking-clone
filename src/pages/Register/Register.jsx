@@ -50,7 +50,8 @@ function Register() {
 					/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
 					"Password invalid",
 				),
-			confirmPassword: Yup.string().oneOf(
+			confirmPassword: Yup.string()
+			.oneOf(
 				[Yup.ref("password"), null],
 				"Password didn't match. Try again",
 			),

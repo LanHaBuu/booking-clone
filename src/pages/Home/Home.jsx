@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux"
+
 import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai"
 import classNames from "classnames/bind"
 import { FormattedMessage } from "react-intl"
 
 import styles from "./Home.module.css"
 import Header from "../../components/Header/Header"
-import { routes } from "../../routes/routes"
 
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
@@ -40,28 +39,14 @@ function Home() {
 	const [showClose, setShowClose] = useState(false)
 	const [changeBaner, setChangeBaner] = useState()
 
-	const navigate = useNavigate()
-	// const userLogin = useSelector(state => state.user.login?.userLogin)
 	const { language } = useSelector(state => state.translate)
-
-	// const { data: doctorList } = useSelector(state => state.doctor.doctor)
-
-	// console.log(doctorList)
-
-	// const dispatch = useDispatch()
-
-	// useEffect(() => {
-	// 	if (!userLogin) {
-	// 		navigate(routes.login)
-	// 	}
-	// }, [userLogin])
 
 	const settings = {
 		dots: false,
 		infinite: true,
 		speed: 1000,
-		slidesToShow: 3,
-		slidesToScroll: 3,
+		slidesToShow: 4,
+		slidesToScroll: 4,
 	}
 
 	const handleChange = e => {
@@ -87,6 +72,11 @@ function Home() {
 	return (
 		<>
 			<Header />
+			<div className={cx("admin-text")}>
+				<div>Admin:</div>
+				<div>Email: admin@mail.com</div>
+				<div>Pass: admin123</div>
+			</div>
 			<div
 				className={cx("container-fluid", "wrapper-home-header")}
 				style={{ backgroundImage: `url(${changeBaner})` }}

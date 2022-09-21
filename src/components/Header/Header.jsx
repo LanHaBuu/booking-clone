@@ -14,6 +14,7 @@ import { getUserSuccess } from "../../redux/Slice/userSlice"
 import { changeLanguage } from "../../redux/Slice/translateSlice"
 import vnFlag from "../../assests/images/language/vietnam.svg.png"
 import engFlag from "../../assests/images/language/english.svg.png"
+
 const cx = classNames.bind(styles)
 
 function Header() {
@@ -22,6 +23,9 @@ function Header() {
 	const { language } = useSelector(state => state.translate)
 	const { userLogin } = useSelector(state => state.user.login)
 	const { userSession } = useSelector(state => state.user.getUserWithSession)
+	const userFirebase =
+		JSON.parse(localStorage.getItem("userGg")) ||
+		JSON.parse(localStorage.getItem("userFb"))
 
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
@@ -33,7 +37,7 @@ function Header() {
 	}, [userLogin])
 
 	if (userSession && userSession.role === "admin") {
-		navigate("/admin")
+		navigate(routes.admin)
 	}
 
 	const handleLogout = () => {
@@ -53,8 +57,8 @@ function Header() {
 	return (
 		<div className={cx("wrapper-header", "container-fluid")}>
 			<div className={cx("container", "container-header")}>
-				<div className='row pt-3'>
-					<div className='col-lg-3 col-md-4 col-sm-5 col-7'>
+				<div className='row pt-3 align-items-center'>
+					<div className='col-xxl-2 col-lg-3 col-md-4 col-sm-5 col-5'>
 						<FaBars className={cx("logo-menu")} />
 						<Link to={routes.home}>
 							<img
@@ -103,7 +107,7 @@ function Header() {
 
 					<div
 						className={cx(
-							"col-lg-2 col-md-4 col-sm-4 col-3",
+							"col-lg-2 col-md-4 col-sm-4 col-4",
 							"language",
 						)}
 					>
@@ -146,12 +150,16 @@ function Header() {
 									className={cx("user-avatar")}
 								/>
 							)}
-							{userSession && (
+							{userSession ? (
 								<img
 									alt='ảnh nền'
 									src={userSession.avatar}
 									className={cx("user-avatar")}
 								/>
+							) : userFirebase ? (
+								<span></span>
+							) : (
+								<Link to='/login'>Login</Link>
 							)}
 						</div>
 						{showInfoUser && (

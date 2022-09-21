@@ -1,13 +1,17 @@
 .doctor-schedule-wrapper {
-    .schedule-time {
-        height: 160px;
-    }
-
     .time-btn {
         background-color: #FFF8AE;
         padding: 8px 16px;
         margin: 10px 0;
-        width: 190px;
+    }
+
+    .calendar-icon {
+        font-size: 1.6rem;
+        margin-right: 10px;
+    }
+
+    .calendar span {
+        font-weight: 500;
     }
 
     .doctor-schedule-select {
@@ -19,5 +23,14 @@
         border: none;
         border-bottom: 1px solid;
         margin-bottom: 10px;
+        width: 170px;
+    }
+}
+
+@media (max-width: 576px) {
+    .doctor-schedule-wrapper {
+        .time-btn {
+            width: 130px;
+        }
     }
 }

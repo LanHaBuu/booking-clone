@@ -14,7 +14,7 @@
 
 .home-header-center {
     margin-top: 80px;
-    height: 70%;
+    height: 60%;
 }
 
 .home-header-text {
@@ -70,7 +70,7 @@
 
 .footer-header-home {
     background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 1));
-    height: 100%;
+    height: 40%;
 }
 
 .home-item {
@@ -113,7 +113,7 @@
 
 .session-block {
     max-width: 1296px;
-    max-height: 330px;
+
     padding-top: 20px;
     padding-bottom: 30px;
     margin-top: 20px;
@@ -121,6 +121,20 @@
 
 .session-bg {
     background: #dadada;
+
+}
+
+.admin-text {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+@media (max-width:1400px) {
+    .admin-text {
+        display: none;
+    }
 }
 
 @media (max-width: 768px) {
@@ -131,9 +145,7 @@
 }
 
 @media (max-width: 576px) {
-    .home-header-center {
-        height: 40%;
-    }
+
 
     .footer-header-home {
         height: 310px;

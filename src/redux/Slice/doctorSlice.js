@@ -34,12 +34,12 @@ const doctorSlice = createSlice({
 		// 	state.doctorInfo.data = action.payload
 		// },
 
-		getDoctorSchedule: (state, action) => {
-			state.doctorSchedule.data = [
-				...state.doctorSchedule.data,
-				...action.payload,
-			]
-		},
+		// getDoctorSchedule: (state, action) => {
+		// 	state.doctorSchedule.data = [
+		// 		...state.doctorSchedule.data,
+		// 		...action.payload,
+		// 	]
+		// },
 	},
 })
 
@@ -48,6 +48,6 @@ export const {
 	getDocterDataSuccess,
 	getDocterDataFail,
 	// getDoctorInfo,
-	getDoctorSchedule,
+	// getDoctorSchedule,
 } = doctorSlice.actions
 export default doctorSlice.reducer

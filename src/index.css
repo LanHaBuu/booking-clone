@@ -23,6 +23,7 @@ p {
   margin: 0 !important;
 }
 
+
 .active {
   opacity: 0.5 !important;
 }
@@ -78,4 +79,12 @@ html *::-webkit-scrollbar-track {
 .slide-customize .slick-next::before {
   font-size: 2.4rem;
   color: black;
+}
+
+.slide-customize>div:focus-visible {
+  outline: none !important;
+}
+
+.slide-customize>img:focus-visible {
+  outline: none !important;
 }

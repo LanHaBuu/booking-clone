@@ -1,0 +1,160 @@
+.modal-container {
+
+    .booking-content {
+        display: flex;
+        padding: 0 10px;
+
+        .content-left {
+            width: 35%;
+            height: 400px;
+
+
+            .doctor {
+                display: flex;
+                justify-content: space-between;
+
+                img {
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    margin-right: 10px;
+                }
+
+                .book-schedule {
+                    .title {
+                        text-transform: uppercase;
+                        color: gray;
+                        flex: 1;
+                    }
+
+                    .name {
+                        font-weight: 500;
+                        color: #337ab7;
+                    }
+                }
+            }
+
+            .price {
+                margin-top: 20px;
+            }
+
+            .note {
+                padding: 0 5px;
+                background-color: #D4EFFC;
+                font-size: 0.9rem;
+                margin-top: 10px;
+
+                ul {
+                    padding-left: 1rem;
+                }
+
+            }
+        }
+
+        .content-right {
+            width: 65%;
+            height: 400px;
+            padding: 0 20px;
+
+            .title {
+                text-align: center;
+            }
+
+            .wrapper-input {
+                margin-bottom: 15px;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                padding: 0 10px;
+
+                .icon-human {
+                    margin-right: 10px;
+                }
+
+                .input {
+                    flex: 1;
+                    height: 30px;
+                    font-size: 1rem;
+
+                }
+
+                .error-message {
+                    color: crimson;
+
+                }
+            }
+
+            .input-gender {
+                margin-bottom: 15px;
+                width: 15%;
+                display: flex;
+                justify-content: space-between;
+
+                input {
+                    margin-right: 5px;
+                }
+            }
+
+            .btn-submit {
+                font-size: 1.2rem;
+                font-weight: 500;
+                background-color: #FFC419;
+                color: white;
+                width: 100%;
+                margin-top: 15px;
+                padding: 5px 0;
+            }
+        }
+    }
+}
+
+@media (max-width:1200px) {
+    .modal-dialog-centered {
+        min-height: auto !important;
+    }
+
+    .modal-container {
+        height: 70%;
+    }
+}
+
+@media (max-width:992px) {
+    .modal-dialog {
+        max-width: 100% !important;
+    }
+}
+
+@media (max-width:768px) {
+
+    .modal-container {
+        height: 100%;
+
+        .content-left {
+            width: 100% !important;
+            height: auto !important;
+
+            .doctor {
+                justify-content: center !important;
+            }
+        }
+
+        .content-right {
+            width: 100% !important;
+
+            .input-gender {
+                width: 30% !important;
+
+            }
+        }
+
+        .booking-content {
+            flex-direction: column;
+        }
+
+        .btn.btn-secondary {
+            opacity: 0;
+        }
+    }
+}

@@ -10,15 +10,22 @@ import _ from "lodash"
 
 import "./AdminSchedule.scss"
 import { useEffect, useRef, useState } from "react"
-import { fetchTime, getDataDoctor } from "../../redux/apiRequest"
-import { getDoctorSchedule } from "../../redux/Slice/doctorSlice"
+import {
+	fetchTime,
+	getDataDoctor,
+	getDoctorScheduleApi,
+	postDoctorSchedule,
+} from "../../redux/apiRequest"
+
+import { buildFormData } from "../../components/SelectForm/SelectForm"
 
 function AdminSchedule() {
-	const { data: doctor } = useSelector(state => state.doctor.doctor)
+	const { data } = useSelector(state => state.doctor.doctor)
+
 	const [selectValue, setSelectValue] = useState(null)
 	const [date, setDate] = useState(new Date())
 
-	const dataSc = useSelector(state => state.doctor.doctorSchedule.data)
+	const { data: dataSc } = useSelector(state => state.doctorSchedule)
 
 	let { time } = useSelector(state => state.time)
 
@@ -26,24 +33,12 @@ function AdminSchedule() {
 
 	useEffect(() => {
 		getDataDoctor(dispatch)
+		getDoctorScheduleApi(dispatch)
 	}, [])
 
 	useEffect(() => {
 		fetchTime(dispatch)
 	}, [])
-
-	const buildDataInputSelect = () => {
-		const arr = []
-		if (doctor && doctor.length > 0) {
-			doctor.map(item => {
-				const obj = {}
-				obj.value = item.id
-				obj.label = item.name
-				arr.push(obj)
-			})
-			return arr
-		}
-	}
 
 	const handleChangeSelect = e => {
 		setSelectValue(e)
@@ -75,6 +70,9 @@ function AdminSchedule() {
 			})
 		}
 	}
+	// -----------
+
+	// -------------
 
 	const handleSaveSchedule = () => {
 		if (!selectValue) {
@@ -114,19 +112,22 @@ function AdminSchedule() {
 				})
 
 				const checkArr = _.differenceWith(result, dataSc, (a, b) => {
-					return a.date === b.date && a.time === b.time
+					return (
+						a.date === b.date &&
+						a.time === b.time &&
+						a.doctorId === b.doctorId
+					)
 				})
+				// console.log(checkArr)
+				// dispatch(getDoctorSchedule(checkArr))
+				postDoctorSchedule([...dataSc, ...checkArr], selectValue.value)
 
-				dispatch(getDoctorSchedule(checkArr))
 				toast.success("Cập nhật thành công")
 			}
 		}
 
 		setSelectValue(null)
 		setDate(new Date())
-
-		// console.log(list)
-		// console.log(moment().format("DD/MM/YYYY"))
 	}
 
 	return (
@@ -143,7 +144,7 @@ function AdminSchedule() {
 							<Select
 								value={selectValue}
 								onChange={handleChangeSelect}
-								options={buildDataInputSelect()}
+								options={buildFormData(data)}
 								className='mt-2'
 							/>
 						</div>

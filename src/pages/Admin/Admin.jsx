@@ -6,55 +6,81 @@ import { useDispatch, useSelector } from "react-redux"
 import Select from "react-select"
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import { buildFormData } from "../../components/SelectForm/SelectForm"
 
-import { getDataDoctor } from "../../redux/apiRequest"
-// import { getDoctorInfo } from "../../redux/Slice/doctorSlice"
+import {
+	getDataDoctor,
+	fetchCast,
+	postDoctorDetail,
+	getDoctorDetail,
+} from "../../redux/apiRequest"
 
 import "./Admin.scss"
 import AdminMenu from "./AdminMenu"
 
-const mdParser = new MarkdownIt(/* Markdown-it options */)
+const mdParser = new MarkdownIt()
 
 function Admin() {
 	const [contentMarkdown, setContentMarkdown] = useState("")
 	const [contentHTML, setContentHTML] = useState("")
-	const [selectValue, setSelectValue] = useState("")
+	const [selectValue, setSelectValue] = useState(null)
 	const [doctorDesc, setDoctorDesc] = useState("")
 	const [changeBtn, setChangeBtn] = useState(false)
+	const { data } = useSelector(state => state.doctor.doctor)
+	const [state, setState] = useState({
+		price: "",
+		payment: "",
+		province: "",
+	})
+
+	const [nameClinic, setNameClinic] = useState("")
+	const [addressClinic, setAddressClinic] = useState("")
+	const [note, setNote] = useState("")
 
 	const dispatch = useDispatch()
 
-	const [test, setTest] = useState(() => {
-		const doctorDetail =
-			JSON.parse(localStorage.getItem("doctor-details")) || []
-		return doctorDetail
-	})
+	const { data: test } = useSelector(state => state.doctorDetail)
 
-	// useEffect(() => {
-	// 	dispatch(getDoctorInfo(test))
-	// }, [])
+	const {
+		payment: paymentfromAPI,
+		price: pricefromAPI,
+		province: provincefromAPI,
+	} = useSelector(state => state.cast.castData)
 
 	useEffect(() => {
 		getDataDoctor(dispatch)
+		fetchCast(dispatch)
+		getDoctorDetail(dispatch)
 	}, [])
-
-	const { data: doctorList } = useSelector(state => state.doctor.doctor)
 
 	function handleEditorChange({ html, text }) {
 		setContentMarkdown(text)
 		setContentHTML(html)
 	}
 
-	const handleChange = selectValue => {
-		setSelectValue(selectValue)
-		if (test[0].doctorId === selectValue.value) {
-			setDoctorDesc(test[0].doctorDesc)
-			setContentMarkdown(test[0].contentMarkdown)
-			setChangeBtn(true)
-		} else {
-			setDoctorDesc("")
-			setContentMarkdown("")
-			setChangeBtn(false)
+	const handleChange = e => {
+		setSelectValue(e)
+
+		if (test && test.length > 0) {
+			const newArr = test.filter(item => item.doctorId === e.value)
+			console.log(newArr)
+			if (newArr && newArr.length > 0) {
+				setDoctorDesc(newArr[0].doctorDesc)
+				setContentMarkdown(newArr[0].contentMarkdown)
+
+				setNameClinic(newArr[0].nameClinic)
+				setAddressClinic(newArr[0].nameClinic)
+				setNote(newArr[0].note)
+
+				setChangeBtn(true)
+			} else {
+				setDoctorDesc("")
+				setContentMarkdown("")
+				setNameClinic("")
+				setAddressClinic("")
+				setNote("")
+				setChangeBtn(false)
+			}
 		}
 	}
 
@@ -62,42 +88,56 @@ function Admin() {
 		setDoctorDesc(e.target.value)
 	}
 
+	const handleChangeSelect = (e, name) => {
+		const stateName = name.name
+		const stateCopy = { ...state }
+		stateCopy[stateName] = e
+		setState({
+			...stateCopy,
+		})
+	}
+
+	function saveDataDoctor() {
+		const doctorDetail = {
+			contentHTML,
+			contentMarkdown,
+			doctorDesc,
+			doctorId: selectValue.value,
+			price: state.price,
+			payment: state.payment,
+			province: state.province,
+			nameClinic,
+			addressClinic,
+			note,
+		}
+
+		postDoctorDetail(doctorDetail)
+
+		setSelectValue(null)
+		setDoctorDesc("")
+		setContentMarkdown("")
+		setState({ price: "", payment: "", province: "" })
+		setNameClinic("")
+		setAddressClinic("")
+		setNote("")
+	}
+
 	const handleSave = () => {
 		if (selectValue) {
-			const doctorDetail = {
-				contentHTML,
-				contentMarkdown,
-				doctorDesc,
-				doctorId: selectValue.value,
-			}
-			setTest(prev => {
-				const listDoctorDetail = [...prev, doctorDetail]
-				localStorage.setItem(
-					"doctor-details",
-					JSON.stringify(listDoctorDetail),
-				)
-				return listDoctorDetail
-			})
-			setSelectValue(null)
-			setDoctorDesc("")
-			setContentMarkdown("")
-			toast.success("Update thành công")
+			saveDataDoctor()
+			toast.success("Lưu thông tin thành công")
 			setChangeBtn(false)
 		} else {
 			toast.error("Hãy lựa chọn bác sĩ")
 		}
 	}
 
-	const buildDataInputSelect = () => {
-		const result = []
-		if (doctorList && doctorList.length > 0) {
-			doctorList.map(doctor => {
-				let options = {}
-				options.value = doctor.id
-				options.label = doctor.name
-				result.push(options)
-			})
-			return result
+	const handleUpdate = () => {
+		if (!contentHTML) {
+			toast.error("Bạn chưa sửa thông tin")
+		} else {
+			saveDataDoctor()
+			toast.success("Update thông tin thành công")
 		}
 	}
 
@@ -105,14 +145,16 @@ function Admin() {
 		<div className='admin-wrapper'>
 			<AdminMenu />
 			<div className='container'>
-				<h2 className='markdown-title'>Update thông tin của bác sĩ</h2>
+				<h2 className='markdown-title'>
+					Tạo / Update thông tin của bác sĩ
+				</h2>
 				<div className='row'>
 					<div className='col-lg-6'>
 						<span className='title-select'>Chọn bác sĩ</span>
 						<Select
 							value={selectValue}
 							onChange={handleChange}
-							options={buildDataInputSelect()}
+							options={buildFormData(data)}
 							className='select mt-1'
 						/>
 					</div>
@@ -123,12 +165,82 @@ function Admin() {
 						<textarea
 							name='infor'
 							id='infor'
-							rows='8'
+							rows='3'
 							value={doctorDesc}
 							onChange={handleDoctorDesc}
 							className='update-desc-doctor mt-1'
 							spellCheck='false'
 						/>
+					</div>
+					<div className='row my-3'>
+						<div className='col-lg-4'>
+							<label className='mb-2' htmlFor=''>
+								Chọn giá
+							</label>
+							<Select
+								value={state.price}
+								options={buildFormData(pricefromAPI)}
+								onChange={handleChangeSelect}
+								name='price'
+							/>
+						</div>
+						<div className='col-lg-4'>
+							<label className='mb-2' htmlFor=''>
+								Chọn phương thức thanh toán
+							</label>
+							<Select
+								value={state.payment}
+								options={buildFormData(paymentfromAPI)}
+								onChange={handleChangeSelect}
+								name='payment'
+							/>
+						</div>
+						<div className='col-lg-4'>
+							<label className='mb-2' htmlFor=''>
+								Chọn tỉnh thành
+							</label>
+							<Select
+								value={state.province}
+								options={buildFormData(provincefromAPI)}
+								onChange={handleChangeSelect}
+								name='province'
+							/>
+						</div>
+					</div>
+					<div className='row my-3'>
+						<div className='col-lg-4'>
+							<label className='mb-2' htmlFor=''>
+								Tên phòng khám
+							</label>
+							<input
+								type='text'
+								value={nameClinic}
+								className='form-control'
+								onChange={e => setNameClinic(e.target.value)}
+							/>
+						</div>
+						<div className='col-lg-4'>
+							<label className='mb-2' htmlFor=''>
+								Địa chỉ phòng khám
+							</label>
+							<input
+								type='text'
+								value={addressClinic}
+								className='form-control'
+								onChange={e => setAddressClinic(e.target.value)}
+							/>
+						</div>
+						<div className='col-lg-4'>
+							<label className='mb-2' htmlFor=''>
+								Note
+							</label>
+							<input
+								type='text'
+								value={note}
+								className='form-control'
+								onChange={e => setNote(e.target.value)}
+							/>
+						</div>
 					</div>
 				</div>
 				<hr />
@@ -138,10 +250,11 @@ function Admin() {
 					renderHTML={text => mdParser.render(text)}
 					onChange={handleEditorChange}
 					value={contentMarkdown}
+					placeholder='Nhập thông tin cập nhật cho bác sĩ ...'
 				/>
 				<button
 					className={changeBtn ? "btn-update" : "btn-save"}
-					onClick={handleSave}
+					onClick={changeBtn ? handleUpdate : handleSave}
 				>
 					{changeBtn ? "Update thông tin" : "Lưu thông tin"}
 				</button>
